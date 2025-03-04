@@ -1,0 +1,84 @@
+package com.example.jobportal.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "skills")
+public class Skills {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String name;
+
+    private String exprerienceLevel;
+
+    private String yearsOfExperience;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "job_seeker_profile")
+    private JobSeekerProfile jobSeekerProfile;
+
+    public Skills() {
+    }
+
+    public Skills(int id, String name, String yearsOfExperience, JobSeekerProfile jobSeekerProfile, String exprerienceLevel) {
+        this.id = id;
+        this.name = name;
+        this.yearsOfExperience = yearsOfExperience;
+        this.jobSeekerProfile = jobSeekerProfile;
+        this.exprerienceLevel = exprerienceLevel;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getExprerienceLevel() {
+        return exprerienceLevel;
+    }
+
+    public void setExprerienceLevel(String exprerienceLevel) {
+        this.exprerienceLevel = exprerienceLevel;
+    }
+
+    public String getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(String yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public JobSeekerProfile getJobSeekerProfile() {
+        return jobSeekerProfile;
+    }
+
+    public void setJobSeekerProfile(JobSeekerProfile jobSeekerProfile) {
+        this.jobSeekerProfile = jobSeekerProfile;
+    }
+
+    @Override
+    public String toString() {
+        return "Skills{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", exprerienceLevel='" + exprerienceLevel + '\'' +
+                ", yearsOfExperience='" + yearsOfExperience + '\'' +
+                ", jobSeekerProfile=" + jobSeekerProfile +
+                '}';
+    }
+}
