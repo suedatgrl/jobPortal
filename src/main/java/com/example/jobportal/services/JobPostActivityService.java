@@ -5,6 +5,7 @@ import com.example.jobportal.repository.JobPostActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.RuntimeErrorException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +51,11 @@ public class JobPostActivityService {
             );
         }
         return recruiterJobsDtoList;
+    }
+
+    public JobPostActivity getOne(int id) {
+
+        return jobPostActivityRepository.findById(id).orElseThrow(() -> new RuntimeException("Job not Found"));
+
     }
 }
