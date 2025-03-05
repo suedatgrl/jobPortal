@@ -18,7 +18,10 @@ public class RecruiterProfileService {
 
     public Optional<RecruiterProfile> getOne(Integer id) {
         return recruiterProfileRepository.findById(id);
-    }
+    } //getOne method is used to get the recruiter profile of the current user. by passing the id of the current user.
+    // optional<recruiterprofile> using optional make sure that the object is not null.
+    // if recruiterprofile is null then it will return empty optional.
+    // and recruiterprofile is the object of the recruiterprofile class.
 
     public RecruiterProfile addNew(RecruiterProfile recruiterProfile) {
 

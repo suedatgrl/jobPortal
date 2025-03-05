@@ -38,7 +38,7 @@ public class RecruiterProfileController {
         this.recruiterProfileService = recruiterProfileService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/")//Recruiter profile page
     public String recruiterProfile(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
@@ -46,7 +46,8 @@ public class RecruiterProfileController {
 
             Users users = usersRepository.findByEmail(currentUserName).orElseThrow(() -> new UsernameNotFoundException("Could not " + "find user"));
 
-            Optional<RecruiterProfile> recruiterProfile =recruiterProfileService.getOne(users.getUserId());
+            Optional<RecruiterProfile> recruiterProfile =recruiterProfileService.getOne(users.getUserId()); //different from getcurrentuser method in userservice.
+            // this method came from recruiterprofileservice
 
             if(!recruiterProfile.isEmpty()){
                 model.addAttribute("profile",recruiterProfile.get());
@@ -58,7 +59,7 @@ public class RecruiterProfileController {
 
 
 
-    @PostMapping("/addNew")
+    @PostMapping("/addNew") //Editing page. (first name last name,..., profile phtoto, save buuton)
     public String addNew(RecruiterProfile recruiterProfile, @RequestParam("image") MultipartFile multipartFile, Model model) {
         Authentication  authentication=SecurityContextHolder.getContext().getAuthentication();
         if(!(authentication instanceof AnonymousAuthenticationToken)){
