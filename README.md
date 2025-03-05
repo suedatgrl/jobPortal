@@ -1,5 +1,5 @@
 # jobPortal
-Spring Boot 3 Project
+Spring Boot 3 Project with Hibernate, ORM, JPA entities, Authentication, 
 
 Application Architecture:
 ![image](https://github.com/user-attachments/assets/ee85564d-646d-44fa-848d-268fd06f57b7)
