@@ -8,11 +8,11 @@ public class Skills {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
 
-    private String exprerienceLevel;
+    private String experienceLevel;
 
     private String yearsOfExperience;
 
@@ -23,19 +23,19 @@ public class Skills {
     public Skills() {
     }
 
-    public Skills(int id, String name, String yearsOfExperience, JobSeekerProfile jobSeekerProfile, String exprerienceLevel) {
+    public Skills(Integer id, String name, String experienceLevel, String yearsOfExperience, JobSeekerProfile jobSeekerProfile) {
         this.id = id;
         this.name = name;
         this.yearsOfExperience = yearsOfExperience;
         this.jobSeekerProfile = jobSeekerProfile;
-        this.exprerienceLevel = exprerienceLevel;
+        this.experienceLevel = experienceLevel;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -47,12 +47,12 @@ public class Skills {
         this.name = name;
     }
 
-    public String getExprerienceLevel() {
-        return exprerienceLevel;
+    public String getExperienceLevel() {
+        return experienceLevel;
     }
 
-    public void setExprerienceLevel(String exprerienceLevel) {
-        this.exprerienceLevel = exprerienceLevel;
+    public void setExperienceLevel(String experienceLevel) {
+        this.experienceLevel = experienceLevel;
     }
 
     public String getYearsOfExperience() {
@@ -76,7 +76,7 @@ public class Skills {
         return "Skills{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", exprerienceLevel='" + exprerienceLevel + '\'' +
+                ", experienceLevel='" + experienceLevel + '\'' +
                 ", yearsOfExperience='" + yearsOfExperience + '\'' +
                 ", jobSeekerProfile=" + jobSeekerProfile +
                 '}';

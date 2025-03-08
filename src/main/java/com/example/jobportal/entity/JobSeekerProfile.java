@@ -1,6 +1,7 @@
 package com.example.jobportal.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public class JobSeekerProfile {
 
     @Id
-    private int userAccountId;
+    private Integer userAccountId;
 
     @OneToOne
     @JoinColumn(name = "user_account_id")
@@ -45,7 +46,7 @@ public class JobSeekerProfile {
         this.userId = userId;
     }
 
-    public JobSeekerProfile(int userAccountId, List<Skills> skills, Users userId, String firstName, String city, String country, String employmentType, String lastName, String profilePhoto, String resume, String state, String workAuthorization) {
+    public JobSeekerProfile(Integer userAccountId, Users userId,  String firstName, String country, String lastName, String city, String state, String workAuthorization, String employmentType, String resume, String profilePhoto, List<Skills> skills) {
         this.userAccountId = userAccountId;
         this.skills = skills;
         this.userId = userId;
@@ -60,11 +61,11 @@ public class JobSeekerProfile {
         this.workAuthorization = workAuthorization;
     }
 
-    public int getUserAccountId() {
+    public Integer getUserAccountId() {
         return userAccountId;
     }
 
-    public void setUserAccountId(int userAccountId) {
+    public void setUserAccountId(Integer userAccountId) {
         this.userAccountId = userAccountId;
     }
 
@@ -156,6 +157,16 @@ public class JobSeekerProfile {
         this.skills = skills;
     }
 
+    @Transient
+    public String getPhotosImagePath() {
+        if (profilePhoto == null || userAccountId == null) return null;
+        return "photos/candidate/" + userAccountId + "/" + profilePhoto;
+
+
+    }
+
+
+
     @Override
     public String toString() {
         return "JobSeekerProfile{" +
@@ -170,7 +181,6 @@ public class JobSeekerProfile {
                 ", resume='" + resume + '\'' +
                 ", state='" + state + '\'' +
                 ", workAuthorization='" + workAuthorization + '\'' +
-                ", skills=" + skills +
                 '}';
     }
 }
