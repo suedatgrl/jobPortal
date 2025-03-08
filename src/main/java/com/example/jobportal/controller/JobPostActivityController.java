@@ -36,6 +36,7 @@ public class JobPostActivityController {
         this.jobPostActivityService = jobPostActivityService;
     }
 
+    //BURADA KALDIM
     @GetMapping("/dashboard/")//Dashboard for both recruiter and jobseeker
     public String searchJobs(Model model, @RequestParam(value = "job",required = false) String job,
                                           @RequestParam(value = "location",required = false) String location,
